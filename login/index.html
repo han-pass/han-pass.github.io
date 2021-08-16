@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> HanPass </title>
+    <!-- <script defer src="../handleinput.js"></script> -->
+    <script src="../aes.js"></script>
+    <script src="../pad-nopadding-min.js"></script>
+    <script src="../jsrsasign-all-min.js"></script>
+    <script src="../qrious.min.js"></script>
+    <script src="./login.js" type="module"></script>
+    <script src="../handler.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../handleinput.css"> -->
+  </head>
+
+  <body style="text-align: center">
+    <h1> HanPass </h1>
+    <table style="margin-left:auto; margin-right:auto;"><tr>
+    <td>
+      <table>
+        <div style="display:none !important; visibility:hidden; pointer-events: none;">
+          <input style="width:160px" readonly type="text" name="dummy_id" id="dummy_id" autocomplete="username">
+        </div>
+        <tr>
+          <div id="pm_id" style="display:none !important; visibility:hidden; pointer-events: none;"></div>
+          <td> Site </td>
+          <td> <input type="text" id="url_query" disabled> </td>
+        </tr>
+        <tr>
+          <td> ID </td>
+          <td> <input type="text" id="user_info1" disabled> </td>
+        </tr>
+        <tr>
+          <td> Password </td>
+          <td> <input type="password" id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()" tabindex="1" autofocus> </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:right">
+            <input type="button" id="compute" value="Complete" tabindex="2">
+            <input type="button" id="submit_otp" value="with QR" tabindex="3">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:right">
+            <span class="remember_account_info">
+              Store Account <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            </span>
+            <input type="checkbox" id="remember_sva" onchange="check_sva_local()" checked name="remember_sva">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:right">
+            <span class="remember_credential_info">
+              Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            </span>           
+            <input type="checkbox" id="remember_svp" onchange="check_svp_local()" name="remember_svp">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a onclick="maximize()" style="margin-right:auto; float:right;" href="../manager/">Account Manager</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top">
+      <table>
+      <tr><td>
+      &nbsp;&nbsp;
+      <span id="otp_view" style="margin-left:auto; width:20px; ">
+      <canvas id="qr_method" style="padding-bottom:0px;"></canvas>
+      </span>
+      </td></tr>
+      </table>
+    </td>
+    </tr></table>
+  </body>
+</html>
+

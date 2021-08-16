@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="#">
+    <title> HanPass </title>
+    <script defer src="../handleinput.js"></script>
+    <script src="../aes.js"></script>
+    <script src="../pad-nopadding-min.js"></script>
+    <script src="../jsrsasign-all-min.js"></script>
+    <script src="./create.js" type="module"></script>
+    <script src="../handler.js"></script>
+    <link rel="stylesheet" type="text/css" href="../handleinput.css">
+  </head>
+
+  <body style="text-align: center">
+    <h1> HanPass </h1>
+    <table style="margin-left:auto; margin-right:auto;"><tr>
+    <td>
+    <table>
+      <tr>
+        <td> Site </td>
+        <td> <input type="text" id="url_query" disabled> </td>
+      </tr>
+      <tr>
+        <td> ID </td>
+        <td> <input type="text" id="user_info1" disabled> </td>
+      </tr>
+      <tr>
+        <td> <span class="pwname_info">PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/></span></td>
+        <td>
+          <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
+          <datalist id="pw_name_list">
+            <option value="Default">Default</option>
+            <option value="Special">Special</option>
+          </datalist>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" id="input_name" style="text-align:right; font-weight:bold"> Enter a new password</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td id="input_value">
+          <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:right">
+          <input type="button" id="compute" value="Next" >
+          <input type="button" id="redo" value="&#8634;" >
+        </td>
+      </tr>      
+    </table>
+    </td>
+    <td valign="top">
+      <table>
+      <tr>
+        <td>&nbsp;&#8226;</td>
+        <td style="text-align:left">
+          Store
+        </td>
+      </tr>
+        <td></td>
+        <td style="text-align:left">
+          <span class="remember_account_info">Account <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/></span>
+          <span style="float:right"><input type="checkbox" onchange="check_sva_local()" id="remember_sva" checked name="remember"></span>
+        </td>
+      <tr>
+      </tr>
+      <tr>
+        <td>&nbsp;&#8226;</td>
+        <td style="text-align:left">
+          Remember
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="text-align:left">
+          <span class="remember_credential_info">Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/></span>
+          <span style="float:right"><input type="checkbox" id="remember_svp" onchange="check_svp_local()" name="remember_svp"></span>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">&nbsp;&#8226;</td>
+        <td style="text-align:left; max-width: 100px">
+          <a onclick="maximize()" href="../manager/">Account Manager</a>
+        </td>
+      </tr>
+      </table>
+    </td>
+    </tr></table>
+  </body>
+</html>
+

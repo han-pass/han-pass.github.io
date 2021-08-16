@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+    <title> HanPass </title>
+    <script defer src="../handleinput.js"></script>
+    <script src="../aes.js"></script>
+    <script src="../pad-nopadding-min.js"></script>
+    <script src="../jsrsasign-all-min.js"></script>
+    <script src="./manager.js" type="module"></script>
+    <script src="../handler.js"></script>
+    <script src="../qrious.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../handleinput.css">
+  </head>
+
+  <body>
+    <h1> HanPass - Account Manager </h1>
+    <div class="remember_account_info">
+      &nbsp;&#8226;Store Account <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/><input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
+    </div>
+    <div class="remember_credential_info">
+      &nbsp;&#8226;Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/><input type="checkbox" onchange="check_svp()" id="remember_svp" name="remember">
+    </div>
+    <br>
+    <div>
+      <div>
+        Select by PW Name
+      </div>
+      <input list="pw_name_list" type="text" id="global_pw_name">
+      <datalist id="pw_name_list">
+        <option value="Default">Default</option>
+        <option value="Special">Special</option>
+      </datalist>
+    </div>
+    <br>
+    <table style="white-space:nowrap;" id="entries" border="1">
+      <tr id="entry_title">
+        <th>
+          <input type="checkbox" id="select_global" onchange="select_global()"/>
+        </th>
+        <th>Site</th>
+        <th>ID</th>
+        <th colspan="2">PW Name</th>
+        <th>Auto Login</th>
+        <th>Restored</th>
+      </tr>
+    </table>
+    <!-- <button type="button" id="export_data" onclick="export_data()">Export</button> -->
+    <!-- <button type="button" id="import_data" onclick="import_data()">Import</button> -->
+    <button type="button" id="export_url" onclick="import_url()">Export</button>
+    <button type="button" id="rename" onclick="rename()">Rename</button>
+    <button type="button" id="request_restore" onclick="request_restore()">Restore</button>
+    <button type="button" id="do_reset">Reset</button>
+    <button type="button" id="do_change">Change</button>
+    <button type="button" id="clear_all" onclick="clear_all()">Remove</button>
+    <!-- <div id="input_file"></div>
+    <div><a id="export_result"></a></div> -->
+    <br><br><br>
+    <div id="user_request"></div>
+    <!-- <input type="hidden" id="aux_timeouts" value="60000">
+    <input type="hidden" id="aux_ip" value="true">
+    <br> -->
+
+    <script>
+      pagetype = 4;
+    </script>
+  </body>
+</html>

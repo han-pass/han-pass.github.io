@@ -1,0 +1,22 @@
+/* input.no_autofill {
+    -webkit-text-security: disc;
+} */
+
+@keyframes onAutoFillStart { from {/**/} to {/**/}}
+@keyframes onAutoFillCancel { from {/**/} to {/**/}}
+
+input#user_info3:-webkit-autofill
+{
+    animation-name: onAutoFillStart !important;
+    background-color: bisque;    
+}   
+
+
+input#user_info3:not(:-webkit-autofill)
+{
+    animation-name: onAutoFillCancel !important;
+}
+
+
+
+
