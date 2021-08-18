@@ -10,7 +10,7 @@ window.onload = function() {
     load_pw_name();
     qr = new QRious({
         element: document.getElementById('qr_method'),
-        size: 183,
+        size: 185,
         padding: 0
     });
     window.addEventListener("message", receive_message, false);
