@@ -40,9 +40,10 @@ window.onload = function(){
             '2. HanPass-change page will appear after login\n' +
             '3. Create HanPass for your account'
         hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_login.tabIndex + '" id="hanpass-button" onclick="open_hanpass_login(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
-                                    + '<br>'
-                                    + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
+                                    + '<div style="width: 290px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="./img/qm.jpg"/></div>'
+                                    // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
+                                    // + '<br>'
+                                    // + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
         hanpass_login.after(hanpass_button);
         hanpass_login.type = 'hidden';
     }
@@ -58,9 +59,10 @@ window.onload = function(){
             '2. Set your HanPass never used during the previous password system\n' +
             '3. Fill in other fields and click submit and send to website';
         hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_create.tabIndex + '" id="hanpass-button" onclick="open_hanpass_create(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
-                                    + '<br>'
-                                    + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
+                                    + '<div style="width: 290px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="./img/qm.jpg"/></div>'
+                                    // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
+                                    // + '<br>'
+                                    // + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
         hanpass_create.after(hanpass_button);
         hanpass_create.type = 'hidden';
     }
@@ -77,11 +79,12 @@ window.onload = function(){
             '3. Click submit and send to website';
         let donottext = '<p style="color:red; font-size:15px; font-weight:bold; text-align:center">We recommend you NOT to use the previous password system</p>'
         hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_change.tabIndex + '" id="hanpass-button" onclick="open_hanpass_change(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
-                                    + '<br>'
-                                    + '<div style="width: 290px; color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
-                                    + '<br>'
-                                    + '<div style="width: 290px; color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ donottext +'</div>'
+                                    + '<div style="width: 290px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="./img/qm.jpg"/></div>'
+                                    // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
+                                    // + '<br>'
+                                    // + '<div style="width: 290px; color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
+                                    // + '<br>'
+                                    // + '<div style="width: 290px; color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ donottext +'</div>'
 
         hanpass_change.after(hanpass_button);
         hanpass_change.type = 'hidden';
