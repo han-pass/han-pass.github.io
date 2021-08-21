@@ -23,7 +23,7 @@
     </div>
     <input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
     <div class="popup" onclick="open_rc()">
-      &nbsp;&#8226;Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+      &nbsp;&#8226;Remember Credential<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
       <span id="rc_popup" class="popuptext remember_credential_info">
       </span>           
     </div>
@@ -31,7 +31,11 @@
     <br>
     <div>
       <div>
-        Select by PW Name
+        Select by 
+        <span class="popup" onclick="open_pwn()">
+          PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+          <span id="pwn_popup" class="popuptext pwname_info"></span>
+        </span>
       </div>
       <input list="pw_name_list" type="text" id="global_pw_name">
       <datalist id="pw_name_list">
@@ -54,12 +58,31 @@
     </table>
     <!-- <button type="button" id="export_data" onclick="export_data()">Export</button> -->
     <!-- <button type="button" id="import_data" onclick="import_data()">Import</button> -->
-    <button type="button" id="export_url" onclick="import_url()">Export</button>
-    <button type="button" id="rename" onclick="rename()">Rename</button>
-    <button type="button" id="request_restore" onclick="request_restore()">Restore</button>
-    <button type="button" id="do_reset">Reset</button>
-    <button type="button" id="do_change">Change</button>
-    <button type="button" id="clear_all" onclick="clear_all()">Remove</button>
+    <br>
+    <div>
+      <button type="button" id="export_url" onclick="import_url()">Export</button>
+      Click to export selected accounts to another device.
+    </div>
+    <div>
+      <button type="button" id="rename" onclick="rename()">Rename</button>
+      Click to rename selected accounts.
+    </div>
+    <div>
+      <button type="button" id="request_restore" onclick="request_restore()">Restore</button>
+      Click to send restore email to selected accounts
+    </div>
+    <div>
+      <button type="button" id="do_reset">Reset</button>
+      Click to reset your restored accounts
+    </div>
+    <div>
+      <button type="button" id="do_change">Change</button>
+      Click to change the password of selected accounts at once.
+    </div>
+    <div>
+      <button type="button" id="clear_all" onclick="clear_all()">Remove</button>
+      Click to remove selected accounts
+    </div>
     <!-- <div id="input_file"></div>
     <div><a id="export_result"></a></div> -->
     <br><br><br>

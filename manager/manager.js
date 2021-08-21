@@ -177,7 +177,7 @@ function click_reset() {
         <tr id="pwname_tr">
             <td>
                 <div class="popup" onclick="open_pwn()">
-                    PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+                    PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
                     <span id="pwn_popup" class="popuptext pwname_info"></span>
                 </div>
             </td>
@@ -327,7 +327,7 @@ function go_step2_change() {
     document.getElementById('pwname_tr').innerHTML = 
     `<td>
         <div class="popup" onclick="open_pwn()">
-            PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
             <span id="pwn_popup" class="popuptext pwname_info"></span>
         </div>
     </td>

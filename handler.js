@@ -18,7 +18,7 @@ function change_inner() {
     });
     Array.from(document.getElementsByClassName('remember_credential_info')).forEach(element => {
         window.removeEventListener ("DOMSubtreeModified", change_inner);
-        element.innerHTML = "HanClient remembers the user's credential if checked. It is used to automatically generate the token without saving user password."
+        element.innerHTML = "HanClient remembers the account's credential if checked. It is used to automatically generate the token without saving user password."
         window.addEventListener ("DOMSubtreeModified", change_inner);
     });
 }
