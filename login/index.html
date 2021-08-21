@@ -6,14 +6,14 @@
     <link rel="shortcut icon" href="#">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> HanPass </title>
-    <!-- <script defer src="../handleinput.js"></script> -->
+    <script defer src="../handleinput.js"></script>
     <script src="../aes.js"></script>
     <script src="../pad-nopadding-min.js"></script>
     <script src="../jsrsasign-all-min.js"></script>
     <script src="../qrious.min.js"></script>
     <script src="./login.js" type="module"></script>
     <script src="../handler.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="../handleinput.css"> -->
+    <link rel="stylesheet" type="text/css" href="../handleinput.css">
   </head>
 
   <body style="text-align: center;overflow:hidden">
@@ -45,17 +45,20 @@
         </tr>
         <tr>
           <td colspan="2" style="text-align:right">
-            <span class="remember_account_info">
+            <div class="popup" onclick="open_sa()">
               Store Account <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
-            </span>
+              <span id="sa_popup" class="popuptext remember_account_info"></span>
+            </div>
             <input type="checkbox" id="remember_sva" onchange="check_sva_local()" checked name="remember_sva">
           </td>
         </tr>
         <tr>
           <td colspan="2" style="text-align:right">
-            <span class="remember_credential_info">
+            <div class="popup" onclick="open_rc()">
               Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
-            </span>           
+              <span id="rc_popup" class="popuptext remember_credential_info">
+              </span>           
+            </div>
             <input type="checkbox" id="remember_svp" onchange="check_svp_local()" name="remember_svp">
           </td>
         </tr>

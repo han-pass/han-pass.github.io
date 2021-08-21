@@ -15,14 +15,19 @@
     <link rel="stylesheet" type="text/css" href="../handleinput.css">
   </head>
 
-  <body>
+  <body style="margin: 0 auto;">
     <h1> HanPass - Account Manager </h1>
-    <div class="remember_account_info">
-      &nbsp;&#8226;Store Account <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/><input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
+    <div class="popup" onclick="open_sa()">
+      &nbsp;&#8226;Store Account<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+      <span id="sa_popup" class="popuptext remember_account_info"></span>
     </div>
-    <div class="remember_credential_info">
-      &nbsp;&#8226;Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/><input type="checkbox" onchange="check_svp()" id="remember_svp" name="remember">
+    <input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
+    <div class="popup" onclick="open_rc()">
+      &nbsp;&#8226;Remember Credential <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+      <span id="rc_popup" class="popuptext remember_credential_info">
+      </span>           
     </div>
+    <input type="checkbox" onchange="check_svp()" id="remember_svp" name="remember">
     <br>
     <div>
       <div>
@@ -35,7 +40,7 @@
       </datalist>
     </div>
     <br>
-    <table style="white-space:nowrap;" id="entries" border="1">
+    <table id="entries" border="1">
       <tr id="entry_title">
         <th>
           <input type="checkbox" id="select_global" onchange="select_global()"/>

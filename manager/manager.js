@@ -176,7 +176,10 @@ function click_reset() {
         <table style="text-align: center;margin-left: 70px;">
         <tr id="pwname_tr">
             <td>
-                <span class="pwname_info">PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/></span>
+                <div class="popup" onclick="open_pwn()">
+                    PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+                    <span id="pwn_popup" class="popuptext pwname_info"></span>
+                </div>
             </td>
             <td>
                 <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
@@ -323,7 +326,10 @@ function go_step2_change() {
     document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('pwname_tr').innerHTML = 
     `<td>
-        <span class="pwname_info">PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/></span>
+        <div class="popup" onclick="open_pwn()">
+            PWN <img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            <span id="pwn_popup" class="popuptext pwname_info"></span>
+        </div>
     </td>
     <td>
         <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
@@ -341,7 +347,13 @@ function go_step3_change(){
 }
 
 function go_step4_change(){
-    document.getElementById('input_name').innerHTML = '<span class="eml_info">Recovery Email <img width="15px" height="15px" style=\'display:inline;\' src=\'../img/qm.jpg\'/></span>'
+    document.getElementById('input_name').innerHTML = `
+    <div class="popup" onclick="open_eml()">
+        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        <span id="eml_popup" class="popuptext eml_info">
+        </span>           
+    </div>
+    `    
     document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Change All"
     document.getElementById('eml').focus();
@@ -427,7 +439,12 @@ function go_step2_reset() {
 }
 
 function go_step3_reset() {
-    document.getElementById('input_name').innerHTML = '<span class="eml_info">Recovery Email <img width="15px" height="15px" style=\'display:inline;\' src=\'../img/qm.jpg\'/></span>'
+    document.getElementById('input_name').innerHTML = `
+    <div class="popup" onclick="open_eml()">
+        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        <span id="eml_popup" class="popuptext eml_info">
+        </span>           
+    </div>`
     document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Reset All"
     document.getElementById('eml').focus();

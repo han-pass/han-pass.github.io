@@ -199,7 +199,12 @@ function go_step3() {
 }
 
 function go_step4() {
-    document.getElementById('input_name').innerHTML = '<span class="eml_info">Recovery Email <img width="15px" height="15px" style=\'display:inline;\' src=\'../img/qm.jpg\'/></span>'
+    document.getElementById('input_name').innerHTML = `
+    <div class="popup" onclick="open_eml()">
+        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        <span id="eml_popup" class="popuptext eml_info">
+        </span>           
+    </div>`
     document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Complete"
     document.getElementById('eml').focus();

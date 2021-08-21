@@ -1,22 +1,44 @@
-
-if(document.getElementById('user_info3')) {
-    document.getElementById('user_info3').addEventListener('animationstart', (e) => {
-        switch (e.animationName) {
-            case "onAutoFillStart":
-                if(document.getElementById('user_info4'))
-                document.getElementById('user_info4').value = document.getElementById('user_info3').value
-                return;
-            case "onAutoFillCancel":
-                if(document.getElementById('user_info4'))
-                    document.getElementById('user_info4').value = "";
-                return;
-        }
-    })
-    document.getElementById('user_info3').addEventListener('change', (e) => {
-        // ????
-        window.getComputedStyle(document.getElementById('user_info3')).backgroundColor
-    })
+function open_sa() {
+    var popup = document.getElementById("sa_popup");
+    popup.classList.toggle("show");
 }
+
+function open_rc() {
+    var popup = document.getElementById("rc_popup");
+    popup.classList.toggle("show");
+}
+
+function open_eml() {
+    var popup = document.getElementById("eml_popup");
+    popup.classList.toggle("show");
+}
+
+function open_pwn() {
+    var popup = document.getElementById("pwn_popup");
+    popup.classList.toggle("show");
+}
+
+
+
+
+// if(document.getElementById('user_info3')) {
+//     document.getElementById('user_info3').addEventListener('animationstart', (e) => {
+//         switch (e.animationName) {
+//             case "onAutoFillStart":
+//                 if(document.getElementById('user_info4'))
+//                 document.getElementById('user_info4').value = document.getElementById('user_info3').value
+//                 return;
+//             case "onAutoFillCancel":
+//                 if(document.getElementById('user_info4'))
+//                     document.getElementById('user_info4').value = "";
+//                 return;
+//         }
+//     })
+//     document.getElementById('user_info3').addEventListener('change', (e) => {
+//         // ????
+//         window.getComputedStyle(document.getElementById('user_info3')).backgroundColor
+//     })
+// }
             
 
 // if(localStorage.getItem('Use PM') === null) {

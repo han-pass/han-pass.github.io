@@ -1,17 +1,27 @@
-window.addEventListener('DOMSubtreeModified', function() {
+window.addEventListener('DOMSubtreeModified', change_inner)
+
+function change_inner() {
     Array.from(document.getElementsByClassName('pwname_info')).forEach(element => {
-        element.title = "pwnametest"
+        window.removeEventListener ("DOMSubtreeModified", change_inner);
+        element.innerHTML = "pwnametest"
+        window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('eml_info')).forEach(element => {
-        element.title = "emltest"
+        window.removeEventListener ("DOMSubtreeModified", change_inner);
+        element.innerHTML = "emltest"
+        window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('remember_account_info')).forEach(element => {
-        element.title = "remeber account test"
+        window.removeEventListener ("DOMSubtreeModified", change_inner);
+        element.innerHTML = "remeber account test"
+        window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('remember_credential_info')).forEach(element => {
-        element.title = "remeber credential test"
+        window.removeEventListener ("DOMSubtreeModified", change_inner);
+        element.innerHTML = "remeber credential test"
+        window.addEventListener ("DOMSubtreeModified", change_inner);
     });
-})
+}
 
 
 function check_svp() {
