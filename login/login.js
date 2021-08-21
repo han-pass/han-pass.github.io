@@ -10,7 +10,7 @@ window.onload = function() {
     load_pw_name();
     qr = new QRious({
         element: document.getElementById('qr_method'),
-        size: 185,
+        size: 200,
         padding: 0
     });
     window.addEventListener("message", receive_message, false);
@@ -89,7 +89,6 @@ async function receive_message(event) {
     }
     let [pwname, pr, ma, al] = PMGet(url_query, id, get_prid(pt)(data), false);
     let otp_url = "https://han-pass.github.io/otp#" + get_query_string(url_query, id, sec, pwname, dom_app, otp);
-    console.log("http://localhost:7999/otp#" + get_query_string(url_query, id, sec, pwname, dom_app, otp))
     qr.value= otp_url;
     document.getElementById('otp_view').style.display= "";
     document.getElementById('remember_sva').checked = ma;
