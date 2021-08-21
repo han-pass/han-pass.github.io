@@ -157,7 +157,7 @@ function get_userid_login() {
         try{
             item = f()
         } catch(e){}
-        if(item) {
+        if(item !== null) {
             val = item
             return false;
         }
@@ -172,7 +172,7 @@ function get_userid_create() {
         try{
             item = f()
         } catch(e){}
-        if(item) {
+        if(item !== null) {
             val = item
             return false;
         }
@@ -188,7 +188,7 @@ function get_userid_change() {
         try{
             item = f()
         } catch(e){}
-        if(item) {
+        if(item !== null) {
             val = item
             return false;
         }
