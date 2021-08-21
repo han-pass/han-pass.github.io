@@ -81,12 +81,7 @@ async function receive_message(event) {
     document.getElementById('remember_svp').checked = al;
     
     if(data === null) {
-        document.getElementById('input_name').innerHTML = "Enter a new password"
-        document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
-        document.getElementById('prev_id').innerHTML = ""
-        document.getElementById('pw_name').autocomplete = "username"
-        document.getElementById('user_info3').focus();
-        step = 2
+        go_step2()
         createmode = true;
     }
     else {

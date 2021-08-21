@@ -21,7 +21,10 @@ async function prove_test_adv(data, pr, s) {
 }
 
 function get_prid_adv(data) {
-    return hash(data.hint);
+    if(data)
+        return hash(data.hint);
+    else
+        return null;
 }
 
 function parse_adv(ds) {
