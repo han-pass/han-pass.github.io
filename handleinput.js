@@ -1,19 +1,31 @@
 function open_sa() {
+    document.querySelectorAll('.show').forEach(element => {
+        element.classList.remove('show')
+    });
     var popup = document.getElementById("sa_popup");
     popup.classList.toggle("show");
 }
 
 function open_rc() {
+    document.querySelectorAll('.show').forEach(element => {
+        element.classList.remove('show')
+    });
     var popup = document.getElementById("rc_popup");
     popup.classList.toggle("show");
 }
 
 function open_eml() {
+    document.querySelectorAll('.show').forEach(element => {
+        element.classList.remove('show')
+    });
     var popup = document.getElementById("eml_popup");
     popup.classList.toggle("show");
 }
 
 function open_pwn() {
+    document.querySelectorAll('.show').forEach(element => {
+        element.classList.remove('show')
+    });
     var popup = document.getElementById("pwn_popup");
     popup.classList.toggle("show");
 }
