@@ -1,33 +1,40 @@
+
 function open_sa() {
-    document.querySelectorAll('.show').forEach(element => {
-        element.classList.remove('show')
-    });
-    var popup = document.getElementById("sa_popup");
-    popup.classList.toggle("show");
-}
+    let id = "sa_popup"
+    document.querySelectorAll('.show').forEach(e =>{
+        if(e.id !== id)
+            e.classList.remove('show')
+    })
+    document.getElementById(id).classList.toggle("show")
+}   
 
 function open_rc() {
-    document.querySelectorAll('.show').forEach(element => {
-        element.classList.remove('show')
-    });
-    var popup = document.getElementById("rc_popup");
-    popup.classList.toggle("show");
+    let id = "rc_popup"
+    document.querySelectorAll('.show').forEach(e =>{
+        if(e.id !== id)
+            e.classList.remove('show')
+    })
+    document.getElementById(id).classList.toggle("show")
 }
 
 function open_eml() {
-    document.querySelectorAll('.show').forEach(element => {
-        element.classList.remove('show')
-    });
-    var popup = document.getElementById("eml_popup");
-    popup.classList.toggle("show");
+    let id = "eml_popup"
+    document.querySelectorAll('.show').forEach(e =>{
+        if(e.id !== id)
+            e.classList.remove('show')
+    })
+    document.getElementById(id).classList.toggle("show")
+
 }
 
 function open_pwn() {
-    document.querySelectorAll('.show').forEach(element => {
-        element.classList.remove('show')
-    });
-    var popup = document.getElementById("pwn_popup");
-    popup.classList.toggle("show");
+    let id = "pwn_popup"
+    document.querySelectorAll('.show').forEach(e =>{
+        if(e.id !== id)
+            e.classList.remove('show')
+    })
+    document.getElementById(id).classList.toggle("show")
+
 }
 
 
