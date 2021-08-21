@@ -3,22 +3,22 @@ window.addEventListener('DOMSubtreeModified', change_inner)
 function change_inner() {
     Array.from(document.getElementsByClassName('pwname_info')).forEach(element => {
         window.removeEventListener ("DOMSubtreeModified", change_inner);
-        element.innerHTML = "pwnametest"
+        element.innerHTML = "Password Name information, used to group passwords. It helps users remember which password they used for the account."
         window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('eml_info')).forEach(element => {
         window.removeEventListener ("DOMSubtreeModified", change_inner);
-        element.innerHTML = "emltest"
+        element.innerHTML = "Email information stored in the HanServer, which is used to send an email once the password is forgotten."
         window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('remember_account_info')).forEach(element => {
         window.removeEventListener ("DOMSubtreeModified", change_inner);
-        element.innerHTML = "remeber account test"
+        element.innerHTML = "HanClient remembers the user account if checked. It is stored so that it could be managed in the Account Manager."
         window.addEventListener ("DOMSubtreeModified", change_inner);
     });
     Array.from(document.getElementsByClassName('remember_credential_info')).forEach(element => {
         window.removeEventListener ("DOMSubtreeModified", change_inner);
-        element.innerHTML = "remeber credential test"
+        element.innerHTML = "HanClient remembers the user's credential if checked. It is used to automatically generate the token without saving user password."
         window.addEventListener ("DOMSubtreeModified", change_inner);
     });
 }
