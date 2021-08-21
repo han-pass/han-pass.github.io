@@ -109,18 +109,31 @@ window.onload = function(){
     let hanpass_button = document.createElement('span');
 
     if(hanpass_login) {
-        let whattext = 
-            '<p style="font-weight:bold;">What is HanPass?</p>' +
-            '1. HanPass is a service replacing the previous password system.\n' +
-            '2. Using HanPass, it is perfectly safe to use the same password over all websites.\n' +
-            '3. HanPass enables you to change passwords over all sites in a single click';
+        let whattext =
+        `
+            <p style="font-weight:bold;">What is HanPass?</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. HanPass is a service replacing the previous password system.<br>
+                2. Using HanPass, it is perfectly safe to use the same password over all websites.<br>
+                3. HanPass enables you to change passwords over all sites in a single click
+            </span>
+        `
         let howtext =
-            '<p style="font-weight:bold;">How to use</p>' +
-            '1. If not using HanPass, log in using the bottom password field as usual\n' +
-            '2. HanPass-change page will appear after login\n' +
-            '3. Create HanPass for your account'
-        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_login.tabIndex + '" id="hanpass-button" onclick="open_hanpass_login(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<div style="width: '+button_width+'px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/></div>'
+        `
+            <p style="font-weight:bold;">How to use</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. If not using HanPass, log in using the bottom password field as usual<br>
+                2. HanPass-change page will appear after login<br>
+                3. Create HanPass for your account
+            </span>
+        `
+        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_login.tabIndex + '" id="hanpass-button" onclick="open_hanpass_login(\'' + server_url + '\')">Click to use HanPass</button><br>'
+                                    + '<div class="popup" style="width: '+button_width+'px; text-align:right;font-size:12px" onclick="open_hp()">'
+                                        + 'What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/>'
+                                        + '<span id="hp_popup" class="popuptext">'
+                                            + whattext + howtext
+                                        + '</span>'
+                                    + '</div>'
                                     // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
                                     // + '<br>'
                                     // + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
@@ -128,18 +141,31 @@ window.onload = function(){
         hanpass_login.type = 'hidden';
     }
     if(hanpass_create) {
-        let whattext = 
-            '<p style="font-weight:bold;">What is HanPass?</p>' +
-            '1. HanPass is a service replacing the previous password system.\n' +
-            '2. Using HanPass, it is perfectly safe to use the same password over all websites.\n' +
-            '3. HanPass enables you to change passwords over all sites in a single click';
+        let whattext =
+        `
+            <p style="font-weight:bold;">What is HanPass?</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. HanPass is a service replacing the previous password system.<br>
+                2. Using HanPass, it is perfectly safe to use the same password over all websites.<br>
+                3. HanPass enables you to change passwords over all sites in a single click
+            </span>
+        `
         let howtext =
-            '<p style="font-weight:bold;">How to use</p>' +
-            '1. Click button to enter HanPass\n' +
-            '2. Set your HanPass never used during the previous password system\n' +
-            '3. Fill in other fields and click submit and send to website';
-        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_create.tabIndex + '" id="hanpass-button" onclick="open_hanpass_create(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<div style="width:'+button_width+'px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/></div>'
+        `
+            <p style="font-weight:bold;">How to use</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. Click button to enter HanPass<br>
+                2. Set your HanPass never used during the previous password system<br>
+                3. Fill in other fields and click submit and send to website
+            </span>
+        `
+        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_create.tabIndex + '" id="hanpass-button" onclick="open_hanpass_create(\'' + server_url + '\')">Click to use HanPass</button><br>'
+                                    + '<div class="popup" style="width: '+button_width+'px; text-align:right;font-size:12px" onclick="open_hp()">'
+                                        + 'What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/>'
+                                        + '<span id="hp_popup" class="popuptext">'
+                                            + whattext + howtext
+                                        + '</span>'
+                                    + '</div>'
                                     // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
                                     // + '<br>'
                                     // + '<div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
@@ -147,19 +173,32 @@ window.onload = function(){
         hanpass_create.type = 'hidden';
     }
     if(hanpass_change) {
-        let whattext = 
-            '<p style="font-weight:bold;">What is HanPass?</p>' +
-            '1. HanPass is a service replacing the previous password system.\n' +
-            '2. Using HanPass, it is perfectly safe to use the same password over all websites.\n' +
-            '3. HanPass enables you to change passwords over all sites in a single click';
+        let whattext =
+        `
+            <p style="font-weight:bold;">What is HanPass?</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. HanPass is a service replacing the previous password system.<br>
+                2. Using HanPass, it is perfectly safe to use the same password over all websites.<br>
+                3. HanPass enables you to change passwords over all sites in a single click
+            </span>
+        `
         let howtext =
-            '<p style="font-weight:bold;">How to use</p>' +
-            '1. Click button to enter HanPass\n' +
-            '2. Set your HanPass never used during the previous password system\n' +
-            '3. Click submit and send to website';
+        `
+            <p style="font-weight:bold;">How to use</p> 
+            <span style="width:100%; display:inline-block; text-align: left">
+                1. Click button to enter HanPass<br>
+                2. Set your HanPass never used during the previous password system<br>
+                3. Click submit and send to website
+            </span>
+        `
         let donottext = '<p style="color:red; font-size:15px; font-weight:bold; text-align:center">We recommend you NOT to use the previous password system</p>'
-        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_change.tabIndex + '" id="hanpass-button" onclick="open_hanpass_change(\'' + server_url + '\')">Click to use HanPass</button>'
-                                    + '<div style="width: '+button_width+'px; text-align:right;font-size:12px">What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/></div>'
+        hanpass_button.innerHTML = '<button type="button" tabindex="'+ hanpass_change.tabIndex + '" id="hanpass-button" onclick="open_hanpass_change(\'' + server_url + '\')">Click to use HanPass</button><br>'
+                                    + '<div class="popup" style="width: '+button_width+'px; text-align:right;font-size:12px" onclick="open_hp()">'
+                                        + 'What is HanPass<img width="15px" height="15px" style="display:inline;" src="https://han-pass.github.io/img/qm.jpg"/>'
+                                        + '<span id="hp_popup" class="popuptext">'
+                                            + whattext + howtext
+                                        + '</span>'
+                                    + '</div>'
                                     // + '<br><br><div style="width: 290px;color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ whattext +'</div>'
                                     // + '<br>'
                                     // + '<div style="width: 290px; color:black; background-color:rgba(255,200,100,0.4); border:1px black solid; font-size: 12px; white-space:pre-wrap;">'+ howtext +'</div>'
@@ -188,6 +227,11 @@ document.addEventListener("DOMSubtreeModified", () => {
         })
     }
 });
+
+function open_hp() {
+    var popup = document.getElementById("hp_popup");
+    popup.classList.toggle("show");
+}
 
 function pw_alert() {
     alert("Using this password field is insecure");
@@ -340,6 +384,11 @@ function open_hanpass_change(qurl) {
     const hanpass_url_change = hanpass_url + "change";
     return open_hanpass(queryurl_ch, hanpass_url_change);
 }
+
+document.getElementsByTagName("head")[0].insertAdjacentHTML(
+    "beforeend",
+    "<link rel=\"stylesheet\" href=\"https://han-pass.github.io/handleinput.css\" />"
+);
 
 let popupwindow = function (url, title, w, h) {
     let left = (screen.width/2)-(w/2);
