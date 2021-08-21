@@ -12,7 +12,7 @@ let button_height = null
 let button_width = null
 let id_func = (val) =>{return val}
 
-function init_hanpass(url,dummy, ids, create_func_list, login_func_list, change_func_list, id_func_input=null, height=290, width=30, debug=false) {
+function init_hanpass(url,dummy, ids, create_func_list, login_func_list, change_func_list, id_func_input=null, height=30, width=290, debug=false) {
     server_url = url;
     // hanpass_url = 'http://localhost:7998/'
     dummy_pw = dummy;
