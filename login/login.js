@@ -72,7 +72,10 @@ async function receive_message(event) {
     let url_query = decodeURIComponent(parsed[0]);
     let id = decodeURIComponent(parsed[1]);
     if(id==""){
-        return_failure("Please insert in your username!")
+        return_failure("
+Your Login ID is empty.
+Please input your Login ID first before using HanPass!
+")
     }
     document.getElementById("user_info1").value = id;
     document.getElementById("url_query").value = new URL(url_query).origin;
