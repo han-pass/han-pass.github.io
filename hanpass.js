@@ -8,9 +8,11 @@ let han_hide = ['ooui-php-5', 'ooui-php-4']
 let create_funcs = null
 let login_funcs = null
 let change_funcs = null
+let button_height = null
+let button_width = null
 let id_func = (val) =>{return val}
 
-function init_hanpass(url,dummy, ids, create_func_list, login_func_list, change_func_list, id_func_input=null, debug=false) {
+function init_hanpass(url,dummy, ids, create_func_list, login_func_list, change_func_list, id_func_input=null, height=290, width=30, debug=false) {
     server_url = url;
     // hanpass_url = 'http://localhost:7998/'
     dummy_pw = dummy;
@@ -19,7 +21,85 @@ function init_hanpass(url,dummy, ids, create_func_list, login_func_list, change_
     login_funcs = login_func_list
     change_funcs = change_func_list
     if(id_func_input) id_func = id_func_input
+    button_height = height
+    button_width = width
     if(debug) hanpass_url = "http://localhost:7998/";
+    let styles = `
+    #hanpass-button {
+        all: initial;
+        background-color: lightgray;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;  
+        cursor: pointer;
+    }
+
+    #hanpass-button:hover {
+        all: initial;
+        background-color: gray;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;
+        cursor: pointer;
+    }
+
+    #hanpass-button:focus {
+        all: initial;
+        background-color: gray;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;
+        cursor: pointer;
+    }
+
+    #hanpass-button-entered {
+        all: initial;
+        background-color: lightgreen;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;
+        cursor: pointer;
+    }
+    #hanpass-button-entered:hover {
+        all: initial;
+        background-color: green;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;   
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;
+        cursor: pointer;
+    }
+
+    #hanpass-button-entered:hover {
+        all: initial;
+        background-color: green;
+        color: black;
+        width: ${button_width}px;
+        height: ${button_height}px;   
+        text-align: center;
+        font-size: 12px;
+        border: 3px black;
+        cursor: pointer;
+    }
+    `
+
+    var styleSheet = document.createElement("style")
+    styleSheet.innerText = styles
+    document.head.appendChild(styleSheet)
 }
 
 window.onload = function(){
@@ -260,84 +340,6 @@ function open_hanpass_change(qurl) {
     const hanpass_url_change = hanpass_url + "change";
     return open_hanpass(queryurl_ch, hanpass_url_change);
 }
-
-
-let styles = `
-#hanpass-button {
-    all: initial;
-	background-color: lightgray;
-	color: black;
-    width: 290px;
-    height: 30px;
-	text-align: center;
-	font-size: 12px;
-    border: 3px black;  
-    cursor: pointer;
-}
-
-#hanpass-button:hover {
-    all: initial;
-	background-color: gray;
-	color: black;
-    width: 290px;
-    height: 30px;
-	text-align: center;
-	font-size: 12px;
-	border: 3px black;
-    cursor: pointer;
-}
-
-#hanpass-button:focus {
-    all: initial;
-	background-color: gray;
-	color: black;
-    width: 290px;
-    height: 30px;
-	text-align: center;
-	font-size: 12px;
-	border: 3px black;
-    cursor: pointer;
-}
-
-#hanpass-button-entered {
-    all: initial;
-	background-color: lightgreen;
-	color: black;
-    width: 290px;
-    height: 30px;
-	text-align: center;
-	font-size: 12px;
-	border: 3px black;
-    cursor: pointer;
-}
-#hanpass-button-entered:hover {
-    all: initial;
-	background-color: green;
-	color: black;
-    width: 290px;
-    height: 30px;   
-	text-align: center;
-	font-size: 12px;
-	border: 3px black;
-    cursor: pointer;
-}
-
-#hanpass-button-entered:hover {
-    all: initial;
-	background-color: green;
-	color: black;
-    width: 290px;
-    height: 30px;   
-	text-align: center;
-	font-size: 12px;
-	border: 3px black;
-    cursor: pointer;
-}
-`
-
-var styleSheet = document.createElement("style")
-styleSheet.innerText = styles
-document.head.appendChild(styleSheet)
 
 let popupwindow = function (url, title, w, h) {
     let left = (screen.width/2)-(w/2);
