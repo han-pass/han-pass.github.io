@@ -90,7 +90,7 @@ async function receive_message(event) {
     let [pwname, pr, ma, al] = PMGet(url_query, id, get_prid(pt)(data), false);
     let otp_url = "https://han-pass.github.io/otp#" + get_query_string(url_query, id, sec, pwname, dom_app, otp);
     qr.value= otp_url;
-    document.getElementById('otp_view').style.display= "";
+    document.getElementById('otp_view').style.visibility= "";
     document.getElementById('remember_sva').checked = ma;
     document.getElementById('remember_svp').checked = al;
     document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
