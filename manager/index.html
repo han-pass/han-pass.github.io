@@ -15,12 +15,35 @@
     <link rel="stylesheet" type="text/css" href="../handleinput.css">
   </head>
 
-  <body style="margin: 0 auto;">
+  <body style="margin: 10 auto;">
     <h1> HanPass - Account Manager </h1>
+
+    <b>&#9632; System Setting (Default Values)</b> <br />
     <table>
       <tr>
         <td>
-          Select accounts by 
+          <div class="popup" onclick="open_sa()">
+            &nbsp; Store Account<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            <span id="sa_popup" class="popuptext remember_account_info"></span>
+            <input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
+          </div>
+        </td>
+        <td>
+          <div class="popup" onclick="open_rc()">
+            &nbsp; Remember Credential<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+            <span id="rc_popup" class="popuptext remember_credential_info">
+            </span>           
+          </div>
+          <input type="checkbox" onchange="check_svp()" id="remember_svp" name="remember">      
+        </td>
+      </tr>
+    </table>
+    <br>
+    <b>&#9632; Account Information & Selection</b> <br />
+    <table>
+      <tr>
+        <td>
+          Select accounts by
           <span class="popup" onclick="open_pwn()">
             PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
             <span id="pwn_popup" class="popuptext pwname_info"></span>
@@ -31,28 +54,10 @@
           <datalist id="pw_name_list">
             <option value="Default">Default</option>
             <option value="Special">Special</option>
-          </datalist>    
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="popup" onclick="open_sa()">
-            &nbsp;&#8226;Store Account<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
-            <span id="sa_popup" class="popuptext remember_account_info"></span>
-            <input type="checkbox" id="remember_sva" onchange="check_sva()" checked autocomplete="off" name="remember">
-          </div>
-        </td>
-        <td>
-          <div class="popup" onclick="open_rc()">
-            &nbsp;&#8226;Remember Credential<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
-            <span id="rc_popup" class="popuptext remember_credential_info">
-            </span>           
-          </div>
-          <input type="checkbox" onchange="check_svp()" id="remember_svp" name="remember">      
+          </datalist>
         </td>
       </tr>
     </table>
-    <br>
     <table id="entries" border="1">
       <tr id="entry_title">
         <th>
@@ -60,14 +65,15 @@
         </th>
         <th>Site</th>
         <th>ID</th>
-        <th colspan="2">PW Name</th>
-        <th>Auto Login</th>
+        <th colspan="2">PWN</th>
+        <th>Credential</th>
         <th>Restored</th>
       </tr>
     </table>
     <!-- <button type="button" id="export_data" onclick="export_data()">Export</button> -->
     <!-- <button type="button" id="import_data" onclick="import_data()">Import</button> -->
     <br>
+    <b>&#9632; Export Accounts</b> <br />
     <table>
       <tr>
         <td>
@@ -77,6 +83,20 @@
           Click to export selected accounts to another device.
         </td>
       </tr>
+    </table>
+    <b>&#9632; Remove Accounts</b> <br />
+    <table>
+      <tr>
+        <td>
+          <button style="width:70px" type="button" id="clear_all" onclick="clear_all()">Remove</button>
+        </td>
+        <td>
+          Click to remove selected accounts
+        </td>
+      </tr>
+    </table>
+    <b>&#9632; Rename PWN</b> <br />
+    <table>
       <tr>
         <td>
           <button style="width:70px" type="button" id="rename" onclick="rename()">Rename</button>
@@ -85,6 +105,20 @@
           Click to rename PWN (Password Name) for selected accounts.
         </td>
       </tr>
+    </table>
+    <b>&#9632; Change Password</b> <br />
+    <table>
+      <tr>
+        <td>
+          <button style="width:70px" type="button" id="do_change">Change</button>
+        </td>
+        <td>
+          Click to change the password of selected accounts at once.
+        </td>
+      </tr>
+    </table>
+    <b>&#9632; Recover Password</b> <br />
+    <table>
       <tr>
         <td>
           <button style="width:70px" type="button" id="request_restore" onclick="request_restore()">Restore</button>
@@ -101,24 +135,8 @@
           Click to reset your restored accounts
         </td>
       </tr>
-      <tr>
-        <td>
-          <button style="width:70px" type="button" id="do_change">Change</button>
-        </td>
-        <td>
-          Click to change the password of selected accounts at once.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <button style="width:70px" type="button" id="clear_all" onclick="clear_all()">Remove</button>     
-        </td>
-        <td>
-          Click to remove selected accounts   
-        </td>
-      </tr>
     </table>
-    <!-- <div id="input_file"></div>
+  <!-- <div id="input_file"></div>
     <div><a id="export_result"></a></div> -->
     <br><br><br>
     <div id="user_request"></div>
