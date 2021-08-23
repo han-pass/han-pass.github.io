@@ -107,9 +107,7 @@ window.onload = function(){
     let hanpass_change = document.getElementById('id_hanpassword_change');
     let hanpass_create = document.getElementById('id_hanpassword_create');
     let hanpass_button = document.createElement('span');
-
-    if(hanpass_login) {
-        let whattext =
+    let whattext =
         `
             <p style="font-weight:bold;">What is HanPass?</p> 
             <span style="width:100%; display:inline-block; text-align: left">
@@ -118,6 +116,7 @@ window.onload = function(){
                 3. HanPass enables you to change passwords over all sites in a single click
             </span>
         `
+    if(hanpass_login) {
         let howtext =
         `
             <p style="font-weight:bold;">How to use</p> 
@@ -141,15 +140,6 @@ window.onload = function(){
         hanpass_login.type = 'hidden';
     }
     if(hanpass_create) {
-        let whattext =
-        `
-            <p style="font-weight:bold;">What is HanPass?</p> 
-            <span style="width:100%; display:inline-block; text-align: left">
-                1. HanPass is a service replacing the previous password system.<br>
-                2. Using HanPass, it is perfectly safe to use the same password over all websites.<br>
-                3. HanPass enables you to change passwords over all sites in a single click
-            </span>
-        `
         let howtext =
         `
             <p style="font-weight:bold;">How to use</p> 
@@ -173,15 +163,6 @@ window.onload = function(){
         hanpass_create.type = 'hidden';
     }
     if(hanpass_change) {
-        let whattext =
-        `
-            <p style="font-weight:bold;">What is HanPass?</p> 
-            <span style="width:100%; display:inline-block; text-align: left">
-                1. HanPass is a service replacing the previous password system.<br>
-                2. Using HanPass, it is perfectly safe to use the same password over all websites.<br>
-                3. HanPass enables you to change passwords over all sites in a single click
-            </span>
-        `
         let howtext =
         `
             <p style="font-weight:bold;">How to use</p> 
