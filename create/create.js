@@ -152,14 +152,21 @@ function disable_inputs() {
     if(document.getElementById('user_info2')) {
         document.getElementById('user_info2').disabled = true;
         document.getElementById('user_info2').autofocus = "";
+        document.getElementById('user_info2').type = "text";
+        document.getElementById('user_info2').value = "Done";
     }
     if(document.getElementById('user_info3')) {
         document.getElementById('user_info3').disabled = true;
         document.getElementById('user_info3').autofocus = "";
+        document.getElementById('user_info3').type = "text";
+        document.getElementById('user_info3').value = "Done";
+
     }
     if(document.getElementById('user_info4')) {  
         document.getElementById('user_info4').disabled = true;
-        document.getElementById('user_info3').autofocus = "";
+        document.getElementById('user_info4').autofocus = "";
+        document.getElementById('user_info4').type = "text";
+        document.getElementById('user_info4').value = "Done";
     }
 }
 
