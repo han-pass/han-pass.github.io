@@ -93,13 +93,13 @@ async function receive_message(event) {
         window.close()
     }
     let [pwname, pr, ma, al] = PMGet(url_query, id, get_prid(pt)(data), false);
+    document.getElementById("dummy_id").value = pwname;
+    document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
     let otp_url = "https://han-pass.github.io/otp#" + get_query_string(url_query, id, sec, pwname, dom_app, otp);
     qr.value= otp_url;
     document.getElementById('otp_view').style.visibility= "";
     document.getElementById('remember_sva').checked = ma;
     document.getElementById('remember_svp').checked = al;
-    document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
-    document.getElementById("dummy_id").value = pwname;
     if(pr !== "" && data_n === null) {
         setTimeout(async () => {
             let res = confirm("Use Auto Login");
