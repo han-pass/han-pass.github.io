@@ -200,7 +200,7 @@ function go_step4() {
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" placeholder="Type in to modify" autocomplete="off" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Complete"
     document.getElementById('eml').focus();
     step = 4
