@@ -97,10 +97,24 @@ async function QueryChange(id, url_query) {
     return await do_query(url);
 }
 
+function append_row() {
+    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-2)
+    let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
+    newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+}
+
+function delete_rows() {
+    let table = document.getElementById("input_table");
+    while (table.rows.length > 5) {
+        table.deleteRow(3);
+    }
+}
+
 function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, kh) {
     return (async () => {
         if(step === 1) {
             pw = document.getElementById('user_info2').value;
+            append_row();
             go_step2();
         }
         else if(step === 2) {
@@ -111,6 +125,7 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
                 reset_dom();
             }
             else {
+                append_row();
                 go_step3();
             }
         }
@@ -121,6 +136,7 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
                 reset_dom();
             }
             else {
+                delete_rows();
                 go_step4();
             }        
         }
@@ -150,6 +166,7 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
 }
 
 function reset_dom() {
+    delete_rows();
     reset_state();
     if(createmode) {
         go_step2();
@@ -166,8 +183,8 @@ function reset_state() {
 }
 
 function go_step1() {
-    document.getElementById('input_name').innerHTML = "Enter the current password"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_name').innerHTML = "Old"
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2"  autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('prev_id').innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">'
     document.getElementById('pw_name').autocomplete = ""
     document.getElementById('compute').value = "Next"
@@ -176,7 +193,7 @@ function go_step1() {
 }
 
 function go_step2() {
-    document.getElementById('input_name').innerHTML = "Enter a new password"
+    document.getElementById('input_name').innerHTML = "New"
     document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('prev_id').innerHTML = ""
     document.getElementById('pw_name').autocomplete = "username"
@@ -186,7 +203,7 @@ function go_step2() {
 }
 
 function go_step3() {
-    document.getElementById('input_name').innerHTML = "Confirm the new password"
+    document.getElementById('input_name').innerHTML = "Confirm"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
@@ -196,7 +213,7 @@ function go_step3() {
 function go_step4() {
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
-        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`

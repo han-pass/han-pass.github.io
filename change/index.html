@@ -17,11 +17,11 @@
   <body style="text-align: center">
     <h1 style="padding:0;margin-top:10px"> HanPass </h1>
     <table style="margin-left:auto; margin-right:auto;"><tr>
-    <td>
-    <table>
-      <div id="prev_id" style="overflow:hidden; position: absolute; left: -100000px">
-        <input readonly type="text" name="dummy_id" id="dummy_id" autocomplete="username">
-      </div>
+    <td valign="top">
+    <div id="prev_id" style="overflow:hidden; position: absolute; left: -100000px">
+      <input readonly type="text" name="dummy_id" id="dummy_id" autocomplete="username">
+    </div>
+    <table id="input_table">
       <tr>
         <td style="width:60px"> Site </td>
         <td> <input type="text" id="url_query" disabled> </td>
@@ -46,10 +46,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2" id="input_name" style="text-align:right; font-weight:bold"> Enter the current password</td>
-      </tr>
-      <tr>
-        <td></td>
+        <td id="input_name">Old</td>
         <td id="input_value">
           <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()">
         </td>

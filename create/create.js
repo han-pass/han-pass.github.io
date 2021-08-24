@@ -83,6 +83,7 @@ function set_create_button(id, url_query, aux, pt, pt_n, data_n, dom_app, kh) {
                 reset_dom();
             }
             else   {
+                append_row()
                 go_step2();
             }
         }
@@ -93,6 +94,7 @@ function set_create_button(id, url_query, aux, pt, pt_n, data_n, dom_app, kh) {
                 reset_dom();
             }        
             else {
+                delete_rows();
                 go_step3();
             }
         }
@@ -117,6 +119,7 @@ function set_create_button(id, url_query, aux, pt, pt_n, data_n, dom_app, kh) {
 }
 
 function reset_dom() {
+    delete_rows();
     go_step1();
     reset_state();
 }
@@ -128,18 +131,18 @@ function reset_state() {
 
 function delete_rows() {
     let table = document.getElementById("input_table");
-    while (table.rows.length > 4) {
+    while (table.rows.length > 5) {
         table.deleteRow(3);
     }
 }
 
 function append_row() {
-    let newrow = document.getElementById('input_table').insertRow(3)
-    newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="Inserted"></td>'
+    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-2)
+    let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
+    newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
 }
 
 function go_step1() {
-    delete_rows();
     document.getElementById('input_name').innerHTML = "New"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Next"
@@ -149,7 +152,6 @@ function go_step1() {
 
 
 function go_step2() {
-    append_row()
     document.getElementById('input_name').innerHTML = "Confirm"
     document.getElementById('input_value').innerHTML ='<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">';
     document.getElementById('compute').value = "Next"
@@ -158,7 +160,6 @@ function go_step2() {
 }
 
 function go_step3() {
-    delete_rows()
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
         Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
