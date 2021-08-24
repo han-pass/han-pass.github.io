@@ -93,7 +93,7 @@ async function receive_message(event) {
         window.close()
     }
     let [pwname, pr, ma, al] = PMGet(url_query, id, get_prid(pt)(data), false);
-    document.getElementById("dummy_id").value = pwname;
+    document.getElementById("dummy_id_tag").innerHTML = '<input readonly type="text" value="'+ pwname +'" name="dummy_id" id="dummy_id" autocomplete="username">';
     document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
     let otp_url = "https://han-pass.github.io/otp#" + get_query_string(url_query, id, sec, pwname, dom_app, otp);
     qr.value= otp_url;
