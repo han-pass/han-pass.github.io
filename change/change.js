@@ -85,7 +85,7 @@ async function receive_message(event) {
         createmode = true;
     }
     else {
-        document.getElementById("dummy_id").value = pwname;
+        document.getElementById("dummy_id_tag").innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">';
         document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
     }
     document.getElementById('redo').onclick = reset_dom;
@@ -185,7 +185,7 @@ function reset_state() {
 function go_step1() {
     document.getElementById('input_name').innerHTML = "Old"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2"  autocomplete="current-password" onkeypress="enter_pwd()">'
-    document.getElementById('prev_id').innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">'
+    document.getElementById('dummy_id_tag').innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">'
     document.getElementById('pw_name').autocomplete = ""
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info2').focus();
@@ -195,7 +195,7 @@ function go_step1() {
 function go_step2() {
     document.getElementById('input_name').innerHTML = "New"
     document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
-    document.getElementById('prev_id').innerHTML = ""
+    document.getElementById('dummy_id_tag').innerHTML = ""
     document.getElementById('pw_name').autocomplete = "username"
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
