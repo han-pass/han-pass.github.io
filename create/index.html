@@ -16,10 +16,10 @@
   </head>
 
   <body style="text-align: center">
-    <h1> HanPass </h1>
+    <h1 style="padding:0;margin-top:10px"> HanPass </h1>
     <table style="margin-left:auto; margin-right:auto;"><tr>
-    <td>
-    <table>
+    <td valign="top">
+    <table id="input_table">
       <tr>
         <td> Site </td>
         <td> <input type="text" id="url_query" disabled> </td>
@@ -47,17 +47,11 @@
         <td colspan="2" id="input_name" style="text-align:right; font-weight:bold"> Enter a new password</td>
       </tr>
       <tr>
-        <td></td>
-        <td id="input_value">
-          <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="text-align:right">
-          <input type="button" id="compute" value="Next" >
-          <input type="button" id="redo" value="&#8634;" >
-        </td>
-      </tr>      
+          <td></td>
+          <td>
+            <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">
+          </td>
+      </tr>    
     </table>
     </td>
     <td valign="top">
@@ -101,6 +95,12 @@
           <a onclick="maximize()" href="../manager/">Account Manager</a>
         </td>
       </tr>
+      <tr>
+        <td colspan="2" style="text-align:left">
+          <input type="button" id="compute" value="Next" >
+          <input type="button" id="redo" value="&#8634;" >
+        </td>
+      </tr> 
       </table>
     </td>
     </tr></table>

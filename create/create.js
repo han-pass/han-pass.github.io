@@ -123,30 +123,61 @@ function reset_state() {
     pw_confirm = null;
 }
 
+function delete_rows() {
+    let table = document.getElementById("input_table");
+    while (table.rows.length > 4) {
+        table.deleteRow(4);
+    }
+}
+
+function append_row(txt) {
+    let input = document.createElement('tr');
+    input.innerHTML = '<td></td><td>' + txt + '</td>';
+    document.getElementById('input_table').appendChild(input)
+}
+
 function go_step1() {
+    delete_rows();
     document.getElementById('input_name').innerHTML = "Enter a new password"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    append_row('<input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">')
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
     step = 1;
 }
 
+function disable_inputs() {
+    if(document.getElementById('user_info2')) {
+        document.getElementById('user_info2').disabled = true;
+        document.getElementById('user_info2').autofocus = "";
+    }
+    if(document.getElementById('user_info3')) {
+        document.getElementById('user_info3').disabled = true;
+        document.getElementById('user_info3').autofocus = "";
+    }
+    if(document.getElementById('user_info4')) {  
+        document.getElementById('user_info4').disabled = true;
+        document.getElementById('user_info3').autofocus = "";
+    }
+}
+
 function go_step2() {
+    disable_inputs();
     document.getElementById('input_name').innerHTML = "Confirm the new password"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    append_row('<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">');
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
     step = 2
 }
 
 function go_step3() {
+    delete_rows()
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
         Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
+    append_row('<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">')
     document.getElementById('compute').value = "Complete"
     document.getElementById('eml').focus();
     step = 3
