@@ -47,6 +47,9 @@ async function receive_message(event) {
     let parsed = event.data.split(';',2);
     let url_query = decodeURIComponent(parsed[0]);
     let id = decodeURIComponent(parsed[1]);
+    if(id==""){
+        return_failure("Your ID is empty.\nPlease type in your ID first before using HanPass!")
+    }
     document.getElementById("user_info1").value = id;
     document.getElementById("url_query").value = new URL(url_query).origin;
     window.removeEventListener("message", receive_message);
