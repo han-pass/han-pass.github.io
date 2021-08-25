@@ -439,9 +439,10 @@ async function do_update_all() {
             alert(strength); 
             redo_change();
         }
-        else
+        else{
             append_row(true);
             go_step3_change();
+        }
     }
     else if(step === 3) {
         pw_confirm = document.getElementById('user_info4').value;
