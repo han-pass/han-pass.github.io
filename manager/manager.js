@@ -129,11 +129,11 @@ function click_change() {
             </tr>
             <tr>
                 <td>New</td>
-                <td><input style="visibility: hidden;"></td>
+                <td><input disabled></td>
             </tr>
             <tr>
                 <td>Confirm</td>
-                <td><input style="visibility: hidden;"></td>
+                <td><input disabled></td>
             </tr>            
             <tr>
             <td>          
@@ -206,7 +206,7 @@ function click_reset() {
         </tr>  
         <tr>
             <td>Confirm</td>
-            <td><input style="visibility: hidden;"></td>
+            <td><input disabled></td>
         </tr> 
         <tr>
             <td>          
@@ -417,12 +417,12 @@ function reset_rows(change=true) {
     if(change) {
         document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>New</td>
-        <td><input style="visibility: hidden;"></td>
+        <td><input disabled></td>
         `
     }
     document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>Confirm</td>
-        <td><input style="visibility: hidden;"></td>
+        <td><input disabled></td>
     `
 }
 

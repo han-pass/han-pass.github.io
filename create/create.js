@@ -144,7 +144,7 @@ function delete_rows() {
 function reset_rows() {
     document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>Confirm</td>
-        <td><input style="visibility: hidden;"></td>
+        <td><input disabled></td>
     `
 }
 

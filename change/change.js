@@ -120,12 +120,12 @@ function reset_rows() {
     if(!createmode) {
         document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>New</td>
-        <td><input style="visibility: hidden;"></td>
+        <td><input disabled></td>
     `
     }
     document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>Confirm</td>
-        <td><input style="visibility: hidden;"></td>
+        <td><input disabled></td>
     `
 }
 
