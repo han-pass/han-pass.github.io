@@ -87,7 +87,7 @@ async function receive_message(event) {
     }
     else {
         document.getElementById("dummy_id_tag").innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">';
-        document.getElementById("user_info2").placeholder = "PWN: " +  pwname;
+        document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
     }
     document.getElementById('redo').onclick = reset_dom;
     document.getElementById('compute').onclick = set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, kh);
@@ -206,6 +206,7 @@ function go_step1() {
     document.getElementById('input_name').innerHTML = "Old"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2"  autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('dummy_id_tag').innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">'
+    document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
     document.getElementById('pw_name').autocomplete = ""
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info2').focus();
