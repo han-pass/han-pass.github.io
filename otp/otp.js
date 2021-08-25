@@ -29,12 +29,13 @@ async function receive_message() {
     let [mypwname, pr, ma, al] = PMGet(url_query, id, get_prid(pt)(data), false);
     if(mypwname !== "")
         pwname = mypwname
+    document.getElementById("dummy_id_tag").innerHTML = '<input readonly type="text" value="'+ pwname +'" name="dummy_id" id="dummy_id" autocomplete="username">';
+    document.getElementById('user_info2').placeholder = "PWN: " +  pwname;
     document.getElementById('remember_sva').checked = ma;
     document.getElementById('remember_svp').checked = al;
     document.getElementById('hanpass_form').action = url_query+'?query=submit_otp';
-    document.getElementById('user_info2').placeholder = "PWN: " +  pwname;
     // document.getElementById('dummy_id').setAttribute('value', pwname)
-    document.getElementById('dummy_id').value = pwname
+    // document.getElementById('dummy_id').value = pwname
     if(pr !== "" && data_n === null && al) {
         let res = confirm("Use Auto Login");
         if(res) {

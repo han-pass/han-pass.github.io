@@ -26,7 +26,10 @@
       <input type="hidden" name="otp" id="otp" />
       <input type="hidden" name="result" id="result" />
       <input type="hidden" name="user_info1" id="user_info1" />
-      <div style="display:none !important; visibility:hidden; pointer-events: none;">
+      <span id="dummy_id_tag" style="overflow:hidden; position: absolute; left: -100000px">
+      </span>
+
+      <!-- <span style="display:none !important; visibility:hidden; pointer-events: none;">
         <label for="dummy_id">
           <span class="popup" onclick="open_pwn()">
             PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
@@ -35,7 +38,7 @@
         </label>
 
         <input readonly type="text" name="dummy_id" id="dummy_id" autocomplete="username">
-      </div>
+      </span> -->
       <tr>
         <td> <label for="url_query"> Site </label> </td>
         <td> <input type="text" id="url_query" disabled> </td>
@@ -45,10 +48,7 @@
         <td> <input type="text" id="user_info_view" disabled> </td>
       </tr>
       <tr>
-        <td colspan="2" style="text-align:right; font-weight:bold"> <label for="user_info2">Enter the current password</label></td>
-      </tr>
-      <tr>
-        <td></td>
+        <td>Password</td>
         <td>
           <input type="password" name="user_info2" id="user_info2" value="" autocomplete="current-password" autofocus onkeypress="enter_pwd()">
         </td>
