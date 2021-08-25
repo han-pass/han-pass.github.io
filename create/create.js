@@ -120,6 +120,7 @@ function set_create_button(id, url_query, aux, pt, pt_n, data_n, dom_app, kh) {
 
 function reset_dom() {
     delete_rows();
+    reset_rows();
     go_step1();
     reset_state();
 }
@@ -131,12 +132,24 @@ function reset_state() {
 
 function delete_rows() {
     let table = document.getElementById("input_table");
-    while (table.rows.length > 5) {
+    while (table.rows.length > 4) {
         table.deleteRow(3);
     }
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`        
+        <td id="input_name"></td>
+        <td id="input_value"></td>
+    `
+}
+
+function reset_rows() {
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+        <td>Confirm</td>
+        <td><input style="visibility: hidden;"></td>
+    `
 }
 
 function append_row() {
+    document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-2)
     let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-2)
     let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
     newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
