@@ -81,7 +81,8 @@ async function receive_message(event) {
     document.getElementById('remember_svp').checked = al;
     
     if(data === null) {
-        go_step2()
+        go_step2();
+        document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-3)
         createmode = true;
     }
     else {
@@ -98,16 +99,34 @@ async function QueryChange(id, url_query) {
 }
 
 function append_row() {
-    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-2)
+    document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
+    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
     let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
     newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
 }
 
 function delete_rows() {
     let table = document.getElementById("input_table");
-    while (table.rows.length > 5) {
+    while (table.rows.length > 4) {
         table.deleteRow(3);
     }
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML = `
+    <td id="input_name"></td>
+    <td id="input_value"></td>
+    `
+}
+
+function reset_rows() {
+    if(!createmode) {
+        document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+        <td>New</td>
+        <td><input style="visibility: hidden;"></td>
+    `
+    }
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+        <td>Confirm</td>
+        <td><input style="visibility: hidden;"></td>
+    `
 }
 
 function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, kh) {
@@ -167,6 +186,7 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
 
 function reset_dom() {
     delete_rows();
+    reset_rows();
     reset_state();
     if(createmode) {
         go_step2();
