@@ -186,7 +186,7 @@ function click_reset() {
             Reset the selected passwords at once
         </h4>
 
-        <table style="text-align: center;margin-left: 70px;">
+        <table id="input_table" style="text-align: center;margin-left: 70px;">
         <tr id="pwname_tr">
             <td>
                 <div class="popup" onclick="open_pwn()">
@@ -199,12 +199,15 @@ function click_reset() {
             </td>
         </tr>
         <tr>
-            <td colspan="2" id="input_name" style="text-align:right; font-weight:bold"> Enter a new password </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="input_value"> <input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()"> </td>
+            <td id="input_name">New</td>
+            <td id="input_value">
+                <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">
+            </td>
         </tr>  
+        <tr>
+            <td>Confirm</td>
+            <td><input style="visibility: hidden;"></td>
+        </tr> 
         <tr>
             <td>          
             <td style="float:right;">
@@ -379,16 +382,24 @@ function go_step4_change(){
 
 function redo_change() {
     delete_rows();
-    reset_rows();
+    reset_rows(true);
     reset_state();
     go_step1_change();
 }
 
-function append_row() {
-    document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
-    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
-    let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
-    newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+function append_row(change=true) {
+    if(change){
+        document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
+        let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
+        let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
+        newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+    }
+    else {
+        document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-2)
+        let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-2)
+        let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
+        newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+    }
 }
 
 function delete_rows() {
@@ -402,11 +413,13 @@ function delete_rows() {
     `
 }
 
-function reset_rows() {
-    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+function reset_rows(change=true) {
+    if(change) {
+        document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>New</td>
         <td><input style="visibility: hidden;"></td>
-    `
+        `
+    }
     document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
         <td>Confirm</td>
         <td><input style="visibility: hidden;"></td>
@@ -416,7 +429,7 @@ function reset_rows() {
 async function do_update_all() {
     if(step === 1) {
         pw = document.getElementById('user_info2').value;
-        append_row();
+        append_row(true);
         go_step2_change();
     }
     else if(step === 2) {
@@ -427,7 +440,7 @@ async function do_update_all() {
             redo_change();
         }
         else
-            append_row();
+            append_row(true);
             go_step3_change();
     }
     else if(step === 3) {
@@ -475,7 +488,7 @@ async function do_update_all() {
 }
 
 function go_step1_reset() {
-    document.getElementById('input_name').innerHTML = "Enter a new password"
+    document.getElementById('input_name').innerHTML = "New"
     document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
@@ -483,7 +496,7 @@ function go_step1_reset() {
 }
 
 function go_step2_reset() {
-    document.getElementById('input_name').innerHTML = "Confirm the new password"
+    document.getElementById('input_name').innerHTML = "Confirm"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
@@ -504,6 +517,8 @@ function go_step3_reset() {
 }
 
 function redo_reset() {
+    delete_rows();
+    reset_rows(false);
     reset_state();
     go_step1_reset();
 }
@@ -516,8 +531,10 @@ async function do_reset_all() {
             alert(strength); 
             redo_reset();
         }
-        else    
+        else{
+            append_row(false);
             go_step2_reset();
+        }
     }
     else if(step === 2) {
         pw_confirm = document.getElementById('user_info4').value;
@@ -525,8 +542,10 @@ async function do_reset_all() {
             alert("The password confirmation does not match");
             redo_reset();
         }
-        else
+        else{
+            delete_rows()
             go_step3_reset();
+        }
     }
     else {
         let keys = Object.keys(entries);        
