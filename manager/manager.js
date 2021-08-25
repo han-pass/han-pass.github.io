@@ -138,8 +138,8 @@ function click_change() {
             <tr>
             <td>          
                 <td style="float:right;">
-                <input type="button" id="redo" onclick="redo_change()" value="&#8634;">
                 <input type="button" id="compute" value="Next" onclick="do_update_all()">
+                <input type="button" id="redo" onclick="redo_change()" value="&#8634;">
                 </td>
             </td>
             </tr>
@@ -211,8 +211,8 @@ function click_reset() {
         <tr>
             <td>          
             <td style="float:right;">
-                <input type="button" id="redo" onclick="redo_reset()" value="&#8634;">
                 <input type="button" id="compute" value="Next" onclick="do_reset_all()">
+                <input type="button" id="redo" onclick="redo_reset()" value="&#8634;">
             </td>
             </td>
         </tr>
