@@ -112,7 +112,7 @@ async function receive_message(event) {
     }
     // document.getElementById('otp_link').onclick = () => opener.postMessage(otp_str, url_app);
     document.getElementById('compute').onclick = set_login_button(id, url_query, aux, pt, pt_n, data, data_n, etc, pwname);
-    document.getElementById('submit_otp').onclick = set_otp_button(id, url_query, aux, pt, pt_n, data, data_n, etc, pwname);
+    // document.getElementById('submit_otp').onclick = set_otp_button(id, url_query, aux, pt, pt_n, data, data_n, etc, pwname);
     //every 0.5s
     window.setInterval(async function(){
         let otp_hash = CryptoJS.SHA256(otp).toString(CryptoJS.enc.Hex)
