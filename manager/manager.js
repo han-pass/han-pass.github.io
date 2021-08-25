@@ -1006,10 +1006,6 @@ async function request_restore() {
         return;
     }
 
-    let eml = prompt("Enter Your Email Address");
-    if(eml === null)
-        return;
-
     if(document.getElementById('status') === null) {
         let th = document.createElement('th');
         th.id = "status"
@@ -1024,12 +1020,12 @@ async function request_restore() {
             add_status(key);
         if (entry.checked.checked === true) {
             entry.status.nodeValue = "requesting..."
-            await send_request(key, eml)
+            await send_request(key)
         }
     }));
 }
 
-async function send_request(key, eml) {
+async function send_request(key) {
     let [userid, url_hp] = key.split('&');
     let entry = entries[key];
     userid = decodeURIComponent(userid);
@@ -1043,7 +1039,7 @@ async function send_request(key, eml) {
         headers: {},
         redirect: 'follow',
         referrer: 'no-referrer',
-        body: JSON.stringify({ id : userid, url_hp : url_hp, eml : eml }),
+        body: JSON.stringify({ id : userid, url_hp : url_hp }),
     })
     if (res.ok) {
         entry.status.nodeValue = "request sent"
