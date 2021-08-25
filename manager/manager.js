@@ -106,22 +106,35 @@ function click_change() {
             Change the selected passwords at once
         </h4>
 
-        <table style="text-align: center;margin-left: 70px;">
+        <div style="display:none !important; visibility:hidden; pointer-events: none;">
+            <input style="width:160px" type="text" name="dummy_id" id="dummy_id" autocomplete="username">
+        </div>
+        <table id="input_table" style="text-align: center;margin-left: 70px;">
             <tr id="pwname_tr">
                 <td>
-                    <div style="display:none !important; visibility:hidden; pointer-events: none;">
-                        <input style="width:160px" type="text" name="dummy_id" id="dummy_id" autocomplete="username">
+                    <div class="popup" onclick="open_pwn()">
+                        PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+                        <span id="pwn_popup" class="popuptext pwname_info"></span>
                     </div>
+                </td>
+                <td>
+                    <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeypress="enter_pwd()">
                 </td>
             </tr>
             <tr>
-                <td colspan="2" id="input_name" style="text-align:right; font-weight:bold"> Enter the current password </td>
+                <td id="input_name">Old</td>
+                <td id="input_value">
+                <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()">
+                </td>
             </tr>
             <tr>
-            <td></td>
-
-                <td id="input_value"> <input type="password" id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()"> </td>
-            </tr>  
+                <td>New</td>
+                <td><input style="visibility: hidden;"></td>
+            </tr>
+            <tr>
+                <td>Confirm</td>
+                <td><input style="visibility: hidden;"></td>
+            </tr>            
             <tr>
             <td>          
                 <td style="float:right;">
@@ -308,12 +321,14 @@ function reset_state() {
 
 function go_step1_change() {
     step = 1;
-    document.getElementById('input_name').innerHTML = "Enter the current password"
+    document.getElementById('input_name').innerHTML = "Old"
     document.getElementById('input_value').innerHTML = '<input type="password" id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()">'
-    document.getElementById('pwname_tr').innerHTML = `<td>
-    <div style="display:none !important; visibility:hidden; pointer-events: none;">
-        <input style="width:160px" type="text" name="dummy_id" id="dummy_id" autocomplete="username">
-    </div></td>`
+    document.getElementById('pw_name').autocomplete = ""
+    document.getElementById('dummy_id').autocomplete = "username"
+    // document.getElementById('pwname_tr').innerHTML = `<td>
+    // <div style="display:none !important; visibility:hidden; pointer-events: none;">
+    //     <input style="width:160px" type="text" name="dummy_id" id="dummy_id" autocomplete="username">
+    // </div></td>`
     let pwname = get_pwname();
     document.getElementById('user_info2').placeholder = "PWN: " + pwname;
     document.getElementById('dummy_id').value = pwname
@@ -322,24 +337,26 @@ function go_step1_change() {
 }
 
 function go_step2_change() {
-    document.getElementById('input_name').innerHTML = "Enter a new password"
+    document.getElementById('input_name').innerHTML = "New"
     document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
-    document.getElementById('pwname_tr').innerHTML = 
-    `<td>
-        <div class="popup" onclick="open_pwn()">
-            PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
-            <span id="pwn_popup" class="popuptext pwname_info"></span>
-        </div>
-    </td>
-    <td>
-        <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
-    </td>`
+    document.getElementById('dummy_id').autocomplete = ""
+    document.getElementById('pw_name').autocomplete = "username"
+    // document.getElementById('pwname_tr').innerHTML = 
+    // `<td>
+    //     <div class="popup" onclick="open_pwn()">
+    //         PWN<img width="15px" height="15px" style='display:inline;' src='../img/qm.jpg'/>
+    //         <span id="pwn_popup" class="popuptext pwname_info"></span>
+    //     </div>
+    // </td>
+    // <td>
+    //     <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
+    // </td>`
     document.getElementById('user_info3').focus();
     step = 2
 }
 
 function go_step3_change(){
-    document.getElementById('input_name').innerHTML = "Confirm the new password"
+    document.getElementById('input_name').innerHTML = "Confirm"
     document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
@@ -349,7 +366,7 @@ function go_step3_change(){
 function go_step4_change(){
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
-        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        Email<img width="15px" height="15px" placeholder="Type in to modify" style="display:inline;" src="../img/qm.jpg"/>
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>
@@ -361,13 +378,45 @@ function go_step4_change(){
 }
 
 function redo_change() {
+    delete_rows();
+    reset_rows();
     reset_state();
     go_step1_change();
+}
+
+function append_row() {
+    document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
+    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
+    let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
+    newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+}
+
+function delete_rows() {
+    let table = document.getElementById("input_table");
+    while (table.rows.length > 2) {
+        table.deleteRow(1);
+    }
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML = `
+    <td id="input_name"></td>
+    <td id="input_value"></td>
+    `
+}
+
+function reset_rows() {
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+        <td>New</td>
+        <td><input style="visibility: hidden;"></td>
+    `
+    document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+        <td>Confirm</td>
+        <td><input style="visibility: hidden;"></td>
+    `
 }
 
 async function do_update_all() {
     if(step === 1) {
         pw = document.getElementById('user_info2').value;
+        append_row();
         go_step2_change();
     }
     else if(step === 2) {
@@ -378,6 +427,7 @@ async function do_update_all() {
             redo_change();
         }
         else
+            append_row();
             go_step3_change();
     }
     else if(step === 3) {
@@ -386,8 +436,10 @@ async function do_update_all() {
             alert("The password confirmation does not match");
             redo_change();
         }
-        else
+        else{
+            delete_rows()
             go_step4_change();
+        }
     }
     else {
         let keys = Object.keys(entries);
@@ -441,7 +493,7 @@ function go_step2_reset() {
 function go_step3_reset() {
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
-        Recovery Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
+        Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
