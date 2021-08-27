@@ -86,8 +86,21 @@ function maximize() {
     window.resizeTo(screen.availWidth, screen.availHeight);   
 }
 
+function entertab_pwd() {
+    let k = window.event.keyCode ? window.event.keyCode : window.event.which;
+    if(k===9 && !window.event.shiftKey) {
+        window.event.preventDefault()
+        document.activeElement.blur();
+        document.getElementById("compute").click();
+    }
+    else if(k === 13){
+        document.activeElement.blur();
+        document.getElementById("compute").click();
+    }
+}
+
 function enter_pwd() {
-    let k = window.event.keyCode;
+    let k = window.event.keyCode ? window.event.keyCode : window.event.which;
     if(k === 13){
         document.activeElement.blur();
         document.getElementById("compute").click();

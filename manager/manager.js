@@ -118,13 +118,13 @@ function click_change() {
                     </div>
                 </td>
                 <td>
-                    <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeypress="enter_pwd()">
+                    <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeydown="enter_pwd()">
                 </td>
             </tr>
             <tr>
                 <td id="input_name">Old</td>
                 <td id="input_value">
-                <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()">
+                <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeydown="entertab_pwd()">
                 </td>
             </tr>
             <tr>
@@ -195,13 +195,13 @@ function click_reset() {
                 </div>
             </td>
             <td>
-                <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
+                <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeydown="enter_pwd()">
             </td>
         </tr>
         <tr>
             <td id="input_name">New</td>
             <td id="input_value">
-                <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">
+                <input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">
             </td>
         </tr>  
         <tr>
@@ -325,7 +325,7 @@ function reset_state() {
 function go_step1_change() {
     step = 1;
     document.getElementById('input_name').innerHTML = "Old"
-    document.getElementById('input_value').innerHTML = '<input type="password" id="user_info2" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" id="user_info2" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('pw_name').autocomplete = ""
     document.getElementById('dummy_id').autocomplete = "username"
     // document.getElementById('pwname_tr').innerHTML = `<td>
@@ -341,7 +341,7 @@ function go_step1_change() {
 
 function go_step2_change() {
     document.getElementById('input_name').innerHTML = "New"
-    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('dummy_id').autocomplete = ""
     document.getElementById('pw_name').autocomplete = "username"
     // document.getElementById('pwname_tr').innerHTML = 
@@ -352,7 +352,7 @@ function go_step2_change() {
     //     </div>
     // </td>
     // <td>
-    //     <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeypress="enter_pwd()">
+    //     <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeydown="enter_pwd()">
     // </td>`
     document.getElementById('user_info3').focus();
     step = 2
@@ -360,7 +360,7 @@ function go_step2_change() {
 
 function go_step3_change(){
     document.getElementById('input_name').innerHTML = "Confirm"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
     step = 3
@@ -374,7 +374,7 @@ function go_step4_change(){
         </span>           
     </div>
     `    
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Change All"
     document.getElementById('eml').focus();
     step = 4
@@ -490,7 +490,7 @@ async function do_update_all() {
 
 function go_step1_reset() {
     document.getElementById('input_name').innerHTML = "New"
-    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
     step = 1;
@@ -498,7 +498,7 @@ function go_step1_reset() {
 
 function go_step2_reset() {
     document.getElementById('input_name').innerHTML = "Confirm"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
     step = 2
@@ -511,7 +511,7 @@ function go_step3_reset() {
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Reset All"
     document.getElementById('eml').focus();
     step = 3

@@ -157,7 +157,7 @@ function append_row() {
 
 function go_step1() {
     document.getElementById('input_name').innerHTML = "New"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info3" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
     step = 1;
@@ -166,7 +166,7 @@ function go_step1() {
 
 function go_step2() {
     document.getElementById('input_name').innerHTML = "Confirm"
-    document.getElementById('input_value').innerHTML ='<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">';
+    document.getElementById('input_value').innerHTML ='<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">';
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
     step = 2
@@ -179,7 +179,7 @@ function go_step3() {
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML ='<input type="text" id="eml" autocomplete="off" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML ='<input type="text" id="eml" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Complete"
     document.getElementById('eml').focus();
     step = 3

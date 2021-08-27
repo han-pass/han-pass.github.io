@@ -204,7 +204,7 @@ function reset_state() {
 
 function go_step1() {
     document.getElementById('input_name').innerHTML = "Old"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2"  autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info2"  autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('dummy_id_tag').innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">'
     document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
     document.getElementById('pw_name').autocomplete = ""
@@ -215,7 +215,7 @@ function go_step1() {
 
 function go_step2() {
     document.getElementById('input_name').innerHTML = "New"
-    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" placeholder="Minimum 15 characters" id="user_info3" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('dummy_id_tag').innerHTML = ""
     document.getElementById('pw_name').autocomplete = "username"
     document.getElementById('compute').value = "Next"
@@ -225,7 +225,7 @@ function go_step2() {
 
 function go_step3() {
     document.getElementById('input_name').innerHTML = "Confirm"
-    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="password" autofocus id="user_info4" placeholder="Minimum 15 characters" autocomplete="current-password" onkeydown="entertab_pwd()">'
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info4').focus();
     step = 3
@@ -238,7 +238,7 @@ function go_step4() {
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" placeholder="Type in to modify" autocomplete="off" onkeypress="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" placeholder="Type in to modify" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Complete"
     document.getElementById('eml').focus();
     step = 4
