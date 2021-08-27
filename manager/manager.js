@@ -369,12 +369,12 @@ function go_step3_change(){
 function go_step4_change(){
     document.getElementById('input_name').innerHTML = `
     <div class="popup" onclick="open_eml()">
-        Email<img width="15px" height="15px" placeholder="Type in to modify" style="display:inline;" src="../img/qm.jpg"/>
+        Email<img width="15px" height="15px" style="display:inline;" src="../img/qm.jpg"/>
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>
     `    
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeydown="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml"  placeholder="Leave blank for no change" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Change All"
     document.getElementById('eml').focus();
     step = 4
@@ -511,7 +511,7 @@ function go_step3_reset() {
         <span id="eml_popup" class="popuptext eml_info">
         </span>           
     </div>`
-    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" autocomplete="off" onkeydown="enter_pwd()">'
+    document.getElementById('input_value').innerHTML = '<input type="text" id="eml" placeholder="Leave blank for no change" autocomplete="off" onkeydown="enter_pwd()">'
     document.getElementById('compute').value = "Reset All"
     document.getElementById('eml').focus();
     step = 3
