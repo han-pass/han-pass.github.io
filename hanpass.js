@@ -189,12 +189,12 @@ window.onload = function(){
         hanpass_change.after(hanpass_button);
         hanpass_change.type = 'hidden';
     }
-    pw_id.forEach(function(e) {
-        pw = document.getElementById(e);
-        if(pw==null || pw.type != 'password') return;
-        pw.oninput = pw_alert;
-        pw.onclick = pw_alert;
-    })
+    // pw_id.forEach(function(e) {
+    //     pw = document.getElementById(e);
+    //     if(pw==null || pw.type != 'password') return;
+    //     pw.oninput = pw_alert;
+    //     pw.onclick = pw_alert;
+    // })
 }
 
 document.addEventListener("DOMSubtreeModified", () => {
