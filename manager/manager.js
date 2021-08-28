@@ -3,6 +3,15 @@ import {check_strength, load_pw_name, do_query,
     get_prid, prove_test, do_change, do_create, PMPut, PMGet, do_restore, get_otp_url} from "../library.js";
 
 
+window.addEventListener('storage',(event) => {
+    let [_00, _01, _02, _03, restore_data] = event.newValue.split('&')
+    let [_10, _11, _12, _13, prev_data] = event.oldValue.split('&')
+    let key = event.key
+    if(restore_data !== "" && prev_data === "") {
+        entries[key].restored.checked = true;
+    }
+})
+
 // function PMChange(id, url_query, pw_name, salt, pr) {
 //     const url = new URL(url_query)
 //     const path = url.origin + url.pathname;
@@ -981,6 +990,10 @@ async function restore_change(key, pw_n, pwn_n, al) {
         }
         else {
             entry.status.nodeValue = "update failed";
+            let prevval = localStorage.getItem(key)
+            let val = prevval.substr(0,prevval.lastIndexOf('&')+1)
+            localStorage.setItem(key, val)
+            entry.restored.checked = false
         }
     }
     catch (err) {
