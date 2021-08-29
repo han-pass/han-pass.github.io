@@ -107,6 +107,16 @@ function enter_pwd() {
     }
 }
 
+function enter_pwname() {
+    let k = window.event.keyCode ? window.event.keyCode : window.event.which;
+    if(k === 13){
+        window.event.preventDefault()
+        if(document.getElementById('user_info3')) document.getElementById('user_info3').focus()
+        else if(document.getElementById('user_info4')) document.getElementById('user_info4').focus()
+    }
+}
+
+
 // function copy() {
 //     let val = document.getElementById('secuni_result').value;
 //     navigator.clipboard.writeText(val).then(function() {

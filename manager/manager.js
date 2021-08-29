@@ -127,7 +127,7 @@ function click_change() {
                     </div>
                 </td>
                 <td>
-                    <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeydown="enter_pwd()">
+                    <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeydown="enter_pwname()">
                 </td>
             </tr>
             <tr>
@@ -204,7 +204,7 @@ function click_reset() {
                 </div>
             </td>
             <td>
-                <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeydown="enter_pwd()">
+                <input list="pw_name_list" type="text" id="pw_name" autocomplete="username" placeholder="Default" onkeydown="enter_pwname()">
             </td>
         </tr>
         <tr>
