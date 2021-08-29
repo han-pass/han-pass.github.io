@@ -83,6 +83,7 @@ async function receive_message(event) {
     if(data === null) {
         go_step2();
         document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-3)
+        swap_rows()
         createmode = true;
     }
     else {
@@ -99,13 +100,19 @@ async function QueryChange(id, url_query) {
 }
 
 function append_row() {
-    document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
-    let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
+    if(step ===1)
+        swap_rows()
+    let idx = document.getElementById('input_table').rows.length-4+step;
+    document.getElementById('input_table').deleteRow(idx)
+    let newrow = document.getElementById('input_table').insertRow(idx-1)
     let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
     newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+    if(step ===1)
+        swap_rows()
 }
 
 function delete_rows() {
+    if(!createmode && step !== 4) swap_rows();
     let table = document.getElementById("input_table");
     while (table.rows.length > 4) {
         table.deleteRow(3);
@@ -135,13 +142,16 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
             pw = document.getElementById('user_info2').value;
             append_row();
             go_step2();
+            document.getElementById('pw_name').focus();
         }
         else if(step === 2) {
             pw_n = document.getElementById('user_info3').value;
             let strength = check_strength(pw_n);
             if(strength !== null) {
                 alert(strength);
-                reset_dom();
+                pw_n = null;
+                pw_confirm = null;            
+                go_step2();
             }
             else {
                 append_row();
@@ -152,7 +162,22 @@ function set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, 
             pw_confirm = document.getElementById('user_info4').value;
             if(pw_n !== pw_confirm) { 
                 alert("The password confirmation does not match");
-                reset_dom();
+                pw_n = null;
+                pw_confirm = null; 
+                let table = document.getElementById('input_table')        
+                let idx = createmode ? 4 : 5
+                while (table.rows.length > idx) {
+                    table.deleteRow(idx-1);
+                }
+                document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML = `
+                    <td id="input_name"></td>
+                    <td id="input_value"></td>
+                `
+                document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+                    <td>Confirm</td>
+                    <td><input disabled></td>
+                `
+                go_step2();
             }
             else {
                 delete_rows();
@@ -209,6 +234,7 @@ function go_step1() {
     document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
     document.getElementById('pw_name').autocomplete = ""
     document.getElementById('compute').value = "Next"
+    swap_rows();
     document.getElementById('user_info2').focus();
     step = 1;
 }
@@ -221,6 +247,14 @@ function go_step2() {
     document.getElementById('compute').value = "Next"
     document.getElementById('user_info3').focus();
     step = 2
+}
+
+function swap_rows() {
+    let table = document.getElementById('input_table');
+    let parent = table.rows[0].parentNode
+    let old = table.rows[2]
+    let pwn = table.rows[3]
+    parent.insertBefore(pwn, old)
 }
 
 function go_step3() {
