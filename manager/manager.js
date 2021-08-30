@@ -399,7 +399,7 @@ function go_step4_change(){
 }
 
 function redo_change() {
-    delete_rows();
+    delete_rows(true);
     reset_rows(true);
     reset_state();
     go_step1_change();
@@ -423,8 +423,8 @@ function append_row(change=true) {
     }
 }
 
-function delete_rows() {
-    if(step !== 4) swap_rows();
+function delete_rows(change=true) {
+    if(step !== 4 && change) swap_rows();
     let table = document.getElementById("input_table");
     while (table.rows.length > 2) {
         table.deleteRow(1);
@@ -490,7 +490,7 @@ async function do_update_all() {
             go_step2_change();
         }
         else{
-            delete_rows()
+            delete_rows(true)
             go_step4_change();
         }
     }
@@ -557,7 +557,7 @@ function go_step3_reset() {
 }
 
 function redo_reset() {
-    delete_rows();
+    delete_rows(false);
     reset_rows(false);
     reset_state();
     go_step1_reset();
@@ -583,7 +583,7 @@ async function do_reset_all() {
             redo_reset();
         }
         else{
-            delete_rows()
+            delete_rows(false)
             go_step3_reset();
         }
     }
