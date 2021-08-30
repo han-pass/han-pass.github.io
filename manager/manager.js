@@ -119,6 +119,12 @@ function click_change() {
             <input style="width:160px" type="text" name="dummy_id" id="dummy_id" autocomplete="username">
         </div>
         <table id="input_table" style="text-align: center;margin-left: 70px;">
+            <tr>
+                <td id="input_name">Old</td>
+                <td id="input_value">
+                <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeydown="entertab_pwd()">
+                </td>
+            </tr>
             <tr id="pwname_tr">
                 <td>
                     <div class="popup" onclick="open_pwn()">
@@ -128,12 +134,6 @@ function click_change() {
                 </td>
                 <td>
                     <input list="pw_name_list" type="text" id="pw_name" placeholder="Default" onkeydown="enter_pwname()">
-                </td>
-            </tr>
-            <tr>
-                <td id="input_name">Old</td>
-                <td id="input_value">
-                <input type="password" autofocus id="user_info2" autocomplete="current-password" onkeydown="entertab_pwd()">
                 </td>
             </tr>
             <tr>
@@ -331,6 +331,14 @@ function reset_state() {
     pw_confirm = null;
 }
 
+function swap_rows() {
+    let table = document.getElementById('input_table');
+    let parent = table.rows[0].parentNode
+    let old = table.rows[0]
+    let pwn = table.rows[1]
+    parent.insertBefore(pwn, old)
+}
+
 function go_step1_change() {
     step = 1;
     document.getElementById('input_name').innerHTML = "Old"
@@ -345,6 +353,7 @@ function go_step1_change() {
     document.getElementById('user_info2').placeholder = "PWN: " + pwname;
     document.getElementById('dummy_id').value = pwname
     document.getElementById('compute').value = "Next"
+    swap_rows();
     document.getElementById('user_info2').focus();
 }
 
@@ -398,10 +407,13 @@ function redo_change() {
 
 function append_row(change=true) {
     if(change){
-        document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-4+step)
-        let newrow = document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-4+step)
+        if(step === 1) swap_rows();
+        let idx = document.getElementById('input_table').rows.length-4+step;
+        document.getElementById('input_table').deleteRow(idx)
+        let newrow = document.getElementById('input_table').insertRow(idx-1)
         let str = "&#8226;".repeat(document.getElementById('input_value').getElementsByTagName('input')[0].value.length)
         newrow.innerHTML = '<td>'+document.getElementById('input_name').innerText+'</td><td><input disabled=true type="text" value="'+str+'"></td>'
+        if(step === 1) swap_rows();
     }
     else {
         document.getElementById('input_table').deleteRow(document.getElementById('input_table').rows.length-2)
@@ -412,6 +424,7 @@ function append_row(change=true) {
 }
 
 function delete_rows() {
+    if(step !== 4) swap_rows();
     let table = document.getElementById("input_table");
     while (table.rows.length > 2) {
         table.deleteRow(1);
@@ -440,13 +453,16 @@ async function do_update_all() {
         pw = document.getElementById('user_info2').value;
         append_row(true);
         go_step2_change();
+        document.getElementById('pw_name').focus();
     }
     else if(step === 2) {
         pw_n = document.getElementById('user_info3').value;
         let strength = check_strength(pw_n);
         if(strength !== null) {
             alert(strength); 
-            redo_change();
+            pw_n = null;
+            pw_confirm = null;            
+            go_step2_change();
         }
         else{
             append_row(true);
@@ -457,7 +473,21 @@ async function do_update_all() {
         pw_confirm = document.getElementById('user_info4').value;
         if(pw_n !== pw_confirm) { 
             alert("The password confirmation does not match");
-            redo_change();
+            pw_n = null;
+            pw_confirm = null; 
+            let table = document.getElementById('input_table')        
+            while (table.rows.length > 3) {
+                table.deleteRow(2);
+            }
+            document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML = `
+                <td id="input_name"></td>
+                <td id="input_value"></td>
+            `
+            document.getElementById('input_table').insertRow(document.getElementById('input_table').rows.length-1).innerHTML =`
+                <td>Confirm</td>
+                <td><input disabled></td>
+            `
+            go_step2_change();
         }
         else{
             delete_rows()
