@@ -113,6 +113,7 @@ function enter_pwname() {
         window.event.preventDefault()
         if(document.getElementById('user_info3')) document.getElementById('user_info3').focus()
         else if(document.getElementById('user_info4')) document.getElementById('user_info4').focus()
+        else if(document.getElementById('eml')) document.getElementById('eml').focus()
     }
 }
 
