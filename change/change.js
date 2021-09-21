@@ -88,7 +88,7 @@ async function receive_message(event) {
     }
     else {
         document.getElementById("dummy_id_tag").innerHTML = '<input value="' + curr_pwname +'" type="text" name="dummy_id" id="dummy_id" autocomplete="username">';
-        document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
+        if (document.getElementById("user_info2")) document.getElementById("user_info2").placeholder = "PWN: " +  curr_pwname;
     }
     document.getElementById('redo').onclick = reset_dom;
     document.getElementById('compute').onclick = set_change_button(id, url_query, aux, pt, pt_n, data, data_n, dom_app, kh);
